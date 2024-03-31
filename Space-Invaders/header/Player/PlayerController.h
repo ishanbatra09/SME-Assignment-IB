@@ -63,5 +63,23 @@ namespace Player
 
         const sf::Sprite& getColliderSprite() override;
         void onCollision(ICollider* other_collider) override;
+
+        const std::vector<Bullet*>& getBullets() const;
+
+        void decreasePlayerLive();
+        inline void increaseScore(int val) { PlayerModel::player_score += val; }
+        inline void decreaseScore(int val) { PlayerModel::player_score -= val; }
+        inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
+        inline void increaseBulletsFired(int val) { PlayerModel::bullets_fired += val; }
+
+        void enableShield();
+        void enableRapidFire();
+        void enableTrippleLaser();
+
+        sf::Vector2f getPlayerPosition();
+        PlayerState getPlayerState();
+
+        const sf::Sprite& getColliderSprite() override;
+        void onCollision(ICollider* other_collider) override;
     };
 }
